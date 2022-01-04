@@ -1,7 +1,7 @@
 ## 通用说明
 客户端连接腾讯云数据库 Memcached 服务失败或者成功率低，可能与客户端所在的服务器环境有关。
 本工具用于诊断客户端服务器的 tcp 连接环境状态。
-如有任何疑问，请 [提交工单](https://console.cloud.tencent.com/workorder/category) 联系我们。
+如有任何疑问，可通过 [在线支持](https://cloud.tencent.com/online-service?from=connect-us) 联系我们。
 
 ## 工具说明
 ### 安装说明
@@ -13,7 +13,7 @@
 
 2. 将工具上传到云数据库 Memcached 客户端所在的服务器（仅限 Linux 服务器）。解压过程如下所示：
 ``` 
-$ unzip auto_test_link_v1.0.0.zip
+$ tar -zxvf auto_test_link_v1.0.0.tar.gz
 ```
 解压后，会出现2个文件，文件说明如下：
  - auto_test_link.sh：诊断工具脚本。

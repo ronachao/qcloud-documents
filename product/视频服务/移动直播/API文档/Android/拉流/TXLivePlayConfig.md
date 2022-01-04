@@ -1,4 +1,3 @@
-## TXLivePlayConfig
 
 __功能__
 
@@ -6,12 +5,12 @@ __功能__
 
 __介绍__
 
-主要负责 [TXLivePlayer](https://cloud.tencent.com/document/product/454/34775#txliveplayer) 对应的参数设置，其中绝大多数设置项在播放开始之后再设置是无效的。
+主要负责 [TXLivePlayer](https://cloud.tencent.com/document/product/454/34775#txliveplayer) 对应的参数设置，**其中绝大多数设置项在播放开始之后再设置是无效的**。
 
+ 
 
-
-### 常用设置项
-#### setAutoAdjustCacheTime
+## 常用设置项
+### setAutoAdjustCacheTime
 
 设置是否自动调整缓存时间。
 ```
@@ -22,18 +21,18 @@ __参数__
 
 | 参数 | 类型 | 含义 |
 |-----|-----|-----|
-| bAuto | boolean | true：启用； false:关闭。 |
+| bAuto | boolean | true：启用； false：关闭。 |
 
 __介绍__
 
 接口说明：
-- 默认值：true
+- 默认值：true。
 - true：启用自动调整， SDK 将根据网络状况在一个范围内调整缓存时间；通过 [setMaxAutoAdjustCacheTime](https://cloud.tencent.com/document/product/454/34774#setmaxautoadjustcachetime) 和 [setMinAutoAdjustCacheTime](https://cloud.tencent.com/document/product/454/34774#setminautoadjustcachetime) 两个接口来进行设置。
-- false：关闭自动调整， SDK 将使用固定缓存时长；通过 [setCacheTime(float)](https://cloud.tencent.com/document/product/454/34774#setcachetime.28float) 来进行设置。
+- false：关闭自动调整， SDK 将使用固定缓存时长；通过 [setCacheTime(float)](https://cloud.tencent.com/document/product/454/34774#setcachetime) 来进行设置。
 
 ***
 
-#### setCacheTime
+### setCacheTime
 
 设置播放器缓存时间。
 ```
@@ -49,12 +48,12 @@ __参数__
 __介绍__
 
 接口说明：
-- 设置播放器缓存时间，单位为秒；默认值为5秒。
+- 设置播放器缓存时间，单位为秒，默认值为5秒。
 - 不建议设置过大，会影响秒开以及直播流播放的实时性。
 
 ***
 
-#### setMaxAutoAdjustCacheTime
+### setMaxAutoAdjustCacheTime
 
 设置最大的缓存时间。
 ```
@@ -75,7 +74,7 @@ __介绍__
 
 ***
 
-#### setMinAutoAdjustCacheTime
+### setMinAutoAdjustCacheTime
 
 设置最小的缓存时间。
 ```
@@ -96,7 +95,7 @@ __介绍__
 
 ***
 
-#### setVideoBlockThreshold
+### setVideoBlockThreshold
 
 设置播放器视频卡顿报警阈值。
 ```
@@ -113,11 +112,11 @@ __介绍__
 
 接口说明：
 - 默认值：800，单位为毫秒。
-- 当渲染间隔超过此阈值时候，表明产生了卡顿；播放器会通过 [ITXLivePlayListener#onPlayEvent(int， Bundle)](https://cloud.tencent.com/document/product/454/34773#itxliveplaylistener.23onplayevent.28int.2C+bundle) 回调 PLAY_WARNING_VIDEO_PLAY_LAG 事件通知。
+- 当渲染间隔超过此阈值时候，表明产生了卡顿；播放器会通过 [ITXLivePlayListener#onPlayEvent(int， Bundle)](https://cloud.tencent.com/document/product/454/34773#onplayevent) 回调 PLAY_WARNING_VIDEO_PLAY_LAG 事件通知。
 
 ***
 
-#### setConnectRetryCount
+### setConnectRetryCount
 
 设置播放器重连次数。
 ```
@@ -128,19 +127,19 @@ __参数__
 
 | 参数 | 类型 | 含义 |
 |-----|-----|-----|
-| count | int | SDK重连次数。 |
+| count | int | SDK 重连次数。 |
 
 __介绍__
 
 接口说明：
-- 默认值：3；取值范围： 1 - 10。
-- 当 SDK 与服务器异常断开连接时， SDK 会尝试与服务器重连；您可通过此接口设置重连次数。
+- 默认值：3；取值范围：1 - 10。
+- 当 SDK 与服务器异常断开连接时，SDK 会尝试与服务器重连；您可通过此接口设置重连次数。
 
 ***
 
-#### setConnectRetryInterval
+### setConnectRetryInterval
 
-设置播放器重连间隔.。
+设置播放器重连间隔。
 ```
 void setConnectRetryInterval(int interval)
 ```
@@ -149,19 +148,19 @@ __参数__
 
 | 参数 | 类型 | 含义 |
 |-----|-----|-----|
-| interval | int | SDK重连间隔。 |
+| interval | int | SDK 重连间隔。 |
 
 __介绍__
 
 接口说明：
-- 默认值：3，单位为秒；取值范围： 3 - 30。
+- 默认值：3，单位为秒；取值范围：3 - 30。
 - 当 SDK 与服务器异常断开连接时， SDK 会尝试与服务器重连；您可通过此接口设置连续两次重连的时间间隔。
 
 ***
 
 
-### 专业设置项
-#### setEnableMessage
+## 专业设置项
+### setEnableMessage
 
 开启消息通道。
 ```
@@ -172,7 +171,7 @@ __参数__
 
 | 参数 | 类型 | 含义 |
 |-----|-----|-----|
-| enable | boolean | true：开启；false:关闭。 |
+| enable | boolean | true：开启，false：关闭。 |
 
 __介绍__
 
@@ -184,7 +183,7 @@ __介绍__
 
 ***
 
-#### enableAEC
+### enableAEC
 
 设置回声消除。
 ```
@@ -201,13 +200,13 @@ __介绍__
 
 接口说明：
 - 默认值为：false。
-- 连麦时必须开启，非连麦时不要开启。
+- 连麦时，麦克风和播放有回音，所以必须开启回声消除。非连麦情况下，建议不开启。
 
 ***
 
 
-### 待废弃设置项
-#### setEnableNearestIP
+## 待废弃设置项
+### setEnableNearestIP
 
 设置就近选路。
 ```
@@ -218,7 +217,7 @@ __参数__
 
 | 参数 | 类型 | 含义 |
 |-----|-----|-----|
-| enable | boolean | true：开启，false：关闭。 |
+| enable | boolean | true：开启；false：关闭。 |
 
 __介绍__
 
@@ -227,9 +226,9 @@ __介绍__
 
 ***
 
-#### setRtmpChannelType
+### setRtmpChannelType
 
-设置RTMP传输通道的类型。
+设置 RTMP 传输通道的类型。
 ```
 void setRtmpChannelType(int type)
 ```
@@ -242,15 +241,15 @@ __参数__
 
 __介绍__
 
-待废弃，默认值：TXLiveConstants#RTMP_CHANNEL_TYPE_AUTO
+待废弃，默认值：TXLiveConstants#RTMP_CHANNEL_TYPE_AUTO。
 通道类型说明：
-- TXLiveConstants#RTMP_CHANNEL_TYPE_AUTO ：自动
-- TXLiveConstants#RTMP_CHANNEL_TYPE_STANDARD：标准的RTMP协议，网络层采用TCP协议
-- TXLiveConstants#RTMP_CHANNEL_TYPE_PRIVATE： 标准的RTMP协议，网络层采用私有通道传输（在UDP上封装的一套可靠快速的传输通道），能够更好地抵抗网络抖动；对于播放来说，私有传输通道只有在拉取低时延加速流时才可以生效。
+- TXLiveConstants#RTMP_CHANNEL_TYPE_AUTO ：自动。
+- TXLiveConstants#RTMP_CHANNEL_TYPE_STANDARD：标准的 RTMP 协议，网络层采用 TCP 协议。
+- TXLiveConstants#RTMP_CHANNEL_TYPE_PRIVATE：标准的 RTMP 协议，网络层采用私有通道传输（在 UDP 上封装的一套可靠快速的传输通道），能够更好地抵抗网络抖动；对于播放来说，私有传输通道只有在拉取低时延加速流时才可以生效。
 
 ***
 
-#### setCacheFolderPath
+### setCacheFolderPath
 
 设置点播缓存目录。
 ```
@@ -269,7 +268,7 @@ __介绍__
 
 ***
 
-#### setMaxCacheItems
+### setMaxCacheItems
 
 设置点播缓存文件个数。
 ```
@@ -284,13 +283,13 @@ __参数__
 
 __介绍__
 
-待废弃，如果您需要使用点播播放器，推荐您使用：TXVodPlayer。
+待废弃，如果您需要使用点播播放器，推荐您使用：[TXVodPlayer](https://cloud.tencent.com/document/product/881/20216#.E5.AF.B9.E6.8E.A5.E6.94.BB.E7.95.A5)。
 
 ***
 
-#### setHeaders
+### setHeaders
 
-设置自定义HTTP Headers。
+设置自定义 HTTP Headers。
 ```
 void setHeaders(Map< String, String > headers)
 ```
@@ -299,14 +298,11 @@ __参数__
 
 | 参数 | 类型 | 含义 |
 |-----|-----|-----|
-| headers | Map< String, String > | http头。 |
+| headers | Map< String, String > | HTTP 头。 |
 
 __介绍__
 
-待废弃，用于点播视频下载；如果您需要使用点播播放器，推荐您使用：TXVodPlayer。
-
-***
-
+待废弃，用于点播视频下载；如果您需要使用点播播放器，推荐您使用：[TXVodPlayer](https://cloud.tencent.com/document/product/881/20216#.E5.AF.B9.E6.8E.A5.E6.94.BB.E7.95.A5)。
 
 
 

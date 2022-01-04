@@ -1,20 +1,33 @@
-## 使用控制台获取
-1. 登录 [云服务器控制台](https://console.cloud.tencent.com/cvm/) 。
-2. 云服务器列表中列出了您名下的实例，鼠标移动到云服务器的公网 IP 后，出现复制按钮，单击即可复制该 IP 地址。
-  ![](//mc.qcloudimg.com/static/img/be0c50402332ca78c347f372f7c54eef/image.png)
-> **注意：**
-> 公网 IP 地址通过 NAT 映射到内网 IP 地址。因此，如果在实例内部查看网络接口的属性（例如，通过 `ifconfig (Linux)` 或 `ipconfig (Windows)` 命令），则不会显示公网 IP 地址。要从实例内部确定实例的公网 IP 地址，可以参考 [使用实例元数据获取公网 IP 地址](#jump) 。
+## 操作场景
+本文档指导您通过控制台、API，以及实例元数据获取公网 IP。
 
-## 使用 API 获取
-请参考 [查看实例列表](/document/product/213/15728) 相关接口。
+## 操作步骤
+<dx-tabs>
+::: 使用控制台获取
+1. 登录 [云服务器控制台](https://console.cloud.tencent.com/cvm/)。
+2. 在实例的管理页面，根据实际使用的视图模式进行操作：
+  - **列表视图**：鼠标移动至主 IP 地址列，单击 <img src="https://main.qcloudimg.com/raw/6603ab4f907562addb1c01596c6296cd.png" style="margin: 0;"/>，即可复制该 IP 地址。	如下图所示：
+![](https://main.qcloudimg.com/raw/7f184b52a3311b4d3cc45b810bbda04f.png)
+  - **页签视图**：在实例页面中，单击 “IP地址”中公网地址后的 <img src="https://main.qcloudimg.com/raw/6603ab4f907562addb1c01596c6296cd.png" style="margin: 0;"/> 即可复制公网 IP。如下图所示：
+![](https://qcloudimg.tencent-cloud.cn/raw/19885d09721c2a2255324a45f60ad0c8.png)
 
-<span id = "jump">  </span>
-## 使用实例元数据获取
-1. 登录云服务器实例。具体登录方法参考 [登录 Linux 实例](/doc/product/213/5436) 和 [登录 Windows 实例](/doc/product/213/5435) 。
-2. 输入命令：
+<dx-alert infotype="notice" title="">
+由于公网 IP 地址通过 NAT 映射到内网 IP 地址，因此，您如果在实例内部查看网络接口的属性（例如通过 `ifconfig (Linux)` 或 `ipconfig (Windows)` 命令），将不会显示公网 IP 地址。如需从实例内部确定实例的公网 IP 地址，可参考 [使用实例元数据获取](#jump)。
+</dx-alert>
+
+
+:::
+::: 使用\sAPI\s获取
+请参考 [查看实例列表](https://cloud.tencent.com/document/product/213/15728) 相关接口。
+:::
+::: 使用实例元数据获取[](id:jump)
+1. 登录云服务器实例。
+具体登录方法参考 [登录 Linux 实例](https://cloud.tencent.com/document/product/213/16515) 和 [登录 Windows 实例](https://cloud.tencent.com/document/product/213/35697)。
+2. 通过 cURL 工具或是 HTTP 的 GET 请求访问 metadata，获取公网 IP 地址。
 ```
 curl http://metadata.tencentyun.com/meta-data/public-ipv4
-```
-返回值有类似如下结构，即可查看到公网 IP 地址：
-![](//mccdn.qcloud.com/img56a1f015c48e5.png)
-有关更多信息，请参阅 [查看实例元数据](/doc/product/213/4934) 。
+``` 返回值有类似如下结构，即可查看到公网 IP 地址：
+![](https://main.qcloudimg.com/raw/03f603e433b7a5da09e33a8b09d731b4.png)
+有关更多信息，请参阅 [查看实例元数据](https://cloud.tencent.com/document/product/213/4934)。
+:::
+</dx-tabs>

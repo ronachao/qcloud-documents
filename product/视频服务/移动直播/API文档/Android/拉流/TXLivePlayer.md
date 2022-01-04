@@ -1,4 +1,4 @@
-## TXLivePlayer
+
 
 __功能__
 
@@ -9,14 +9,15 @@ __介绍__
 主要负责将直播流的音视频画面进行解码和本地渲染，包含如下技术特点：
 - 针对腾讯云的拉流地址，可使用低延时拉流，实现直播连麦等相关场景。
 - 针对腾讯云的拉流地址，可使用直播时移功能，能够实现直播观看与时移观看的无缝切换。
-- 支持自定义的音视频数据处理，让您可以根据项目需要处理直播流中的音视频数据后，进行渲染以及播放。
+- 支持自定义的音视频数据处理，您可以根据项目需要处理直播流中的音视频数据，然后进行渲染以及播放。
+- SDK 仅支持 Android 4.2 以上的版本。
 
 
 
-### SDK 基础函数
-#### TXLivePlayer
+## SDK 基础函数
+### TXLivePlayer
 
-创建 [TXLivePlayer](https://cloud.tencent.com/document/product/454/34775#txliveplayer) 实例。
+创建 [TXLivePlayer](#txliveplayer) 实例。
 ```
  TXLivePlayer(Context context)
 ```
@@ -29,9 +30,9 @@ __参数__
 
 ***
 
-#### setConfig
+### setConfig
 
-设置 [TXLivePlayer](https://cloud.tencent.com/document/product/454/34775#txliveplayer) 播放配置项。
+设置 [TXLivePlayer](#txliveplayer) 播放配置项。
 ```
 void setConfig(TXLivePlayConfig config)
 ```
@@ -40,13 +41,13 @@ __参数__
 
 | 参数 | 类型 | 含义 |
 |-----|-----|-----|
-| config | [TXLivePlayConfig](https://cloud.tencent.com/document/product/454/34774#txliveplayconfig) | 播放器配置项了，详情见 [TXLivePlayConfig](https://cloud.tencent.com/document/product/454/34774#txliveplayconfig)。 |
+| config | [TXLivePlayConfig](https://cloud.tencent.com/document/product/454/34774) | 播放器配置项，请参见 [TXLivePlayConfig](https://cloud.tencent.com/document/product/454/34774)。 |
 
 ***
 
-#### setPlayListener
+### setPlayListener
 
-设置推流回调接口。
+设置播放回调接口。
 ```
 void setPlayListener(ITXLivePlayListener listener)
 ```
@@ -55,15 +56,15 @@ __参数__
 
 | 参数 | 类型 | 含义 |
 |-----|-----|-----|
-| listener | [ITXLivePlayListener](https://cloud.tencent.com/document/product/454/34773#itxliveplaylistener) | 播放器回调，请参考 [ITXLivePlayListener](https://cloud.tencent.com/document/product/454/34773#itxliveplaylistener)。 |
+| listener | [ITXLivePlayListener](https://cloud.tencent.com/document/product/454/34773) | 播放器回调，请参见 [ITXLivePlayListener](https://cloud.tencent.com/document/product/454/34773)。 |
 
 ***
 
 
-### 播放基础接口
-#### setPlayerView
+## 播放基础接口
+### setPlayerView
 
-设置播放器的视频渲染View。
+设置播放器的视频渲染 View。
 ```
 void setPlayerView(TXCloudVideoView glRootView)
 ```
@@ -72,11 +73,11 @@ __参数__
 
 | 参数 | 类型 | 含义 |
 |-----|-----|-----|
-| glRootView | TXCloudVideoView | 视频渲染view.。 |
+| glRootView | TXCloudVideoView | 视频渲染 View。 |
 
 ***
 
-#### startPlay
+### startPlay
 
 播放器开始播放。
 ```
@@ -92,18 +93,18 @@ __参数__
 
 __返回__
 
-是否成功启动播放. 0: 成功. -1: 失败，playUrl为空. -2: 失败，playUrl非法. -3: 失败，playType非法.。
+是否成功启动播放， 0：成功；-1：失败，playUrl 为空；-2：失败，playUrl 非法；-3：失败，playType 非法。
 
 __介绍__
 
 可播放的直播流连接：
-- RTMP 直播流：[PLAY_TYPE_LIVE_RTMP](https://cloud.tencent.com/document/product/454/34775#play_type_live_rtmp)
-- FLV 直播流：PLAY_TYPE_LIVE_FLV
+- RTMP 直播流：PLAY_TYPE_LIVE_RTMP。
+- FLV 直播流：PLAY_TYPE_LIVE_FLV。
 - RTMP 加速流，用于连麦：PLAY_TYPE_LIVE_RTMP_ACC。
 
 ***
 
-#### stopPlay
+### stopPlay
 
 停止播放。
 ```
@@ -118,17 +119,17 @@ __参数__
 
 __返回__
 
-0：成功；非0：失败.。
+0：成功；非0：失败。
 
 __介绍__
 
 isNeedClearLastImg 提供是否清除最后一帧画面的逻辑：
-- 推荐在正常停止播放时，进行清除
+- 推荐在正常停止播放时，进行清除。
 - 异常播放，如网络异常等，而您希望等待重连服务器，继续播放时，推荐保留。
 
 ***
 
-#### isPlaying
+### isPlaying
 
 是否正在播放。
 ```
@@ -137,11 +138,11 @@ boolean isPlaying()
 
 __返回__
 
-true:正在播放. false:未播放.。
+true：正在播放；false：未播放。
 
 ***
 
-#### pause
+### pause
 
 暂停播放。
 ```
@@ -154,7 +155,7 @@ __介绍__
 
 ***
 
-#### resume
+### resume
 
 恢复播放。
 ```
@@ -167,7 +168,7 @@ __介绍__
 
 ***
 
-#### setSurface
+### setSurface
 
 使用 Surface 模式用于本地渲染。
 ```
@@ -178,16 +179,16 @@ __参数__
 
 | 参数 | 类型 | 含义 |
 |-----|-----|-----|
-| surface | Surface | 视频渲染surface，。 |
+| surface | Surface | 视频渲染 surface。 |
 
 >?
->- 目前仅支持硬解
->- 使用该接口需要 [setPlayerView(TXCloudVideoView)](https://cloud.tencent.com/document/product/454/34775#setplayerview.28txcloudvideoview) 传入null
->- 此功能为高级特性，除非您非常明确需要使用该特性，否则建议您使用 [setPlayerView(TXCloudVideoView)](https://cloud.tencent.com/document/product/454/34775#setplayerview.28txcloudvideoview)。
+>- 目前仅支持硬解。
+>- 使用该接口需要 [setPlayerView(TXCloudVideoView)](#setplayerview) 传入 null。
+>- 此功能为高级特性，除非您需要使用该特性，否则建议您使用 [setPlayerView(TXCloudVideoView)](#setplayerview)。
 
 ***
 
-#### setSurfaceSize
+### setSurfaceSize
 
 设置渲染 Surface 的大小。
 ```
@@ -202,14 +203,14 @@ __参数__
 | height | int | 高。 |
 
 >?
->- Surface 大小变化后，需要重新设定
->- 此功能为高级特性，除非您非常明确需要使用该特性，否则建议您使用 [setPlayerView(TXCloudVideoView)](https://cloud.tencent.com/document/product/454/34775#setplayerview.28txcloudvideoview)。
+>- Surface 大小变化后，需要重新设定。
+>- 此功能为高级特性，除非您需要使用该特性，否则建议您使用 [setPlayerView(TXCloudVideoView)](#setplayerview)。
 
 ***
 
 
-### 播放配置接口
-#### setRenderMode
+## 播放配置接口
+### setRenderMode
 
 设置播放渲染模式。
 ```
@@ -230,7 +231,7 @@ __介绍__
 
 ***
 
-#### setRenderRotation
+### setRenderRotation
 
 设置图像渲染角度。
 ```
@@ -246,12 +247,12 @@ __参数__
 __介绍__
 
 渲染角度有两种：
-- 竖屏：播放是竖屏播放的时候使用
+- 竖屏：播放是竖屏播放的时候使用。
 - 横屏：播放是横屏播放的时候使用。
 
 ***
 
-#### enableHardwareDecode
+### enableHardwareDecode
 
 开启硬件加速。
 ```
@@ -262,15 +263,15 @@ __参数__
 
 | 参数 | 类型 | 含义 |
 |-----|-----|-----|
-| enable | boolean | true:启用视频硬解码， false:禁用视频硬解码。 |
+| enable | boolean | true：启用视频硬解码， false：禁用视频硬解码。 |
 
 __返回__
 
-true：关闭或开启硬件加速成功， false：关闭或开启硬件加速失败。
+true：关闭或开启硬件加速成功；false：关闭或开启硬件加速失败。
 
 ***
 
-#### setMute
+### setMute
 
 设置是否静音播放。
 ```
@@ -281,11 +282,26 @@ __参数__
 
 | 参数 | 类型 | 含义 |
 |-----|-----|-----|
-| mute | boolean | true：静音播放， false:不静音播放。 |
+| mute | boolean | true：静音播放；false：不静音播放。 |
 
 ***
 
-#### setAudioRoute
+### setVolume
+
+设置音量。
+```
+void setVolume(int volume)
+```
+
+__参数__
+
+| 参数 | 类型 | 含义 |
+|-----|-----|-----|
+| volume | int | 音量大小，取值范围 0 - 100。 |
+
+***
+
+### setAudioRoute
 
 设置声音播放模式。
 ```
@@ -296,19 +312,19 @@ __参数__
 
 | 参数 | 类型 | 含义 |
 |-----|-----|-----|
-| audioRoute | int | 声音播放模式,可设置值：TXLiveConstants#AUDIO_ROUTE_SPEAKER、TXLiveConstants#AUDIO_ROUTE_SPEAKER。 |
+| audioRoute | int | 声音播放模式，可设置值：TXLiveConstants#AUDIO_ROUTE_RECEIVER、TXLiveConstants#AUDIO_ROUTE_SPEAKER。 |
 
 __介绍__
 
 播放模式有两种：
-- 听筒：声音将从听筒播出
+- 听筒：声音将从听筒播出。
 - 扬声器：声音将从扬声器播出。
 
 ***
 
-#### switchStream
+### switchStream
 
-多清晰度切换。
+FLV 多清晰度切换。
 ```
 int switchStream(String playUrl)
 ```
@@ -328,8 +344,62 @@ __介绍__
 ***
 
 
-### 本地录制和截图
-#### setVideoRecordListener
+### setAudioVolumeEvaluationListener
+
+设置音量大小回调接口。
+```
+void setAudioVolumeEvaluationListener(ITXAudioVolumeEvaluationListener listener)
+```
+
+__参数__
+
+| 参数 | 类型 | 含义 |
+|-----|-----|-----|
+| listener | [ITXAudioVolumeEvaluationListener](#itxaudiovolumeevaluationlistener) | 音量大小回调接口。 |
+
+***
+
+### enableAudioVolumeEvaluation
+
+启用音量大小评估。
+```
+void enableAudioVolumeEvaluation(int intervalMs)
+```
+
+__参数__
+
+| 参数 | 类型 | 含义 |
+|-----|-----|-----|
+| intervalMs | int | intervalMs 决定了 [onAudioVolumeEvaluationNotify](#onAudioVolumeEvaluationNotify) 回调的触发间隔，单位为ms，最小间隔为 100ms，如果小于等于 0 则会关闭回调，建议设置为 300ms。 |
+
+__介绍__
+
+开启后会在 [onAudioVolumeEvaluationNotify](#onAudioVolumeEvaluationNotify) 中获取到 SDK 对音量大小值的评估。
+
+***
+
+### callExperimentalAPI
+
+调用实验性 API 接口。
+```
+void callExperimentalAPI(final String jsonStr)
+```
+
+__参数__
+
+| 参数 | 类型 | 含义 |
+|-----|-----|-----|
+| jsonStr | String | jsonStr 接口及参数描述的 JSON 字符串。 |
+
+__介绍__
+
+该接口用于调用一些实验性功能。
+
+***
+
+
+## 本地录制和截图
+### setVideoRecordListener
 
 设置录制回调接口。
 ```
@@ -344,7 +414,7 @@ __参数__
 
 ***
 
-#### startRecord
+### startRecord
 
 启动视频录制。
 ```
@@ -367,7 +437,7 @@ __介绍__
 
 ***
 
-#### stopRecord
+### stopRecord
 
 停止视频录制。
 ```
@@ -380,7 +450,7 @@ __返回__
 
 ***
 
-#### snapshot
+### snapshot
 
 播放过程中本地截图。
 ```
@@ -391,13 +461,13 @@ __参数__
 
 | 参数 | 类型 | 含义 |
 |-----|-----|-----|
-| listener | [ITXSnapshotListener](https://cloud.tencent.com/document/product/454/34775#itxsnapshotlistener) | 截图回调。 |
+| listener | [ITXSnapshotListener](#itxsnapshotlistener) | 截图回调。 |
 
 ***
 
-
-### 自定义数据处理
-#### addVideoRawData
+[](id:addVideoRawData)
+## 自定义数据处理
+### addVideoRawData
 
 设置软解码数据载体 Buffer。
 ```
@@ -415,11 +485,11 @@ __介绍__
 三个注意点：
 - 该 Buffer 用于接受软解回调出来的 I420 格式的 YUV 数据。
 - Buffer 大小 = width * height * 3 / 2。
-- 视频 width 、 height，可通过 [ITXLivePlayListener#onPlayEvent(int， Bundle)](https://cloud.tencent.com/document/product/454/34773#itxliveplaylistener.23onplayevent.28int.2C+bundle) 的 TXLiveConstants#PLAY_EVT_CHANGE_RESOLUTION 事件获取到。
+- 视频 width 和 height，可通过 [ITXLivePlayListener#onPlayEvent(int， Bundle)](https://cloud.tencent.com/document/product/454/34773#onplayevent) 的 TXLiveConstants#PLAY_EVT_CHANGE_RESOLUTION 事件获取到。
 
 ***
 
-#### setVideoRawDataListener
+### setVideoRawDataListener
 
 设置软解码视频数据回调。
 ```
@@ -427,12 +497,13 @@ void setVideoRawDataListener(final ITXVideoRawDataListener listener)
 ```
 
 >?
->- 此功能会有一定的性能开销，特别是在高分辨率的情况下
+>- 此功能会有一定的性能开销，特别是在高分辨率的情况下。
+>- 调用前需先调用 addVideoRawData 设置数据载体。
 >- 除非您有特殊的需求，否则不建议您开启。
 
 ***
 
-#### setAudioRawDataListener
+### setAudioRawDataListener
 
 设置音频数据回调。
 ```
@@ -443,7 +514,7 @@ __参数__
 
 | 参数 | 类型 | 含义 |
 |-----|-----|-----|
-| listener | [ITXAudioRawDataListener](https://cloud.tencent.com/document/product/454/34775#itxaudiorawdatalistener) | 音频数据回调。 |
+| listener | [ITXAudioRawDataListener](#itxaudiorawdatalistener) | 音频数据回调。 |
 
 >?
 >- 音频播放器会在播放数据的前一刻，调用此函数，同步回调将要播放的数据。
@@ -452,8 +523,8 @@ __参数__
 ***
 
 
-### 直播时移接口
-#### prepareLiveSeek
+## 直播时移接口
+### prepareLiveSeek
 
 直播时移准备。
 ```
@@ -465,22 +536,21 @@ __参数__
 | 参数 | 类型 | 含义 |
 |-----|-----|-----|
 | domain | String | 时移域名。 |
-| bizid | int | 流bizid。 |
+| bizid | int | 流 bizid。 |
 
 __返回__
 
-0 = OK; -1 = 无直播地址；-2 = appId未配置。
+0：OK；-1：无直播地址；-2：appId 未配置。
 
 __介绍__
 
 使用说明：
 - 非腾讯云直播地址不能时移。
-- 使用时移功能需在播放开始后调用此方法，否者时移失败。
-- 时移的使用请参考文档：[直播时移播放使用文档](https://cloud.tencent.com/document/product/881/20213#.E6.97.B6.E7.A7.BB.E6.92.AD.E6.94.BE)。
+- 使用时移功能需在播放开始后调用此方法，否则时移失败。
 
 ***
 
-#### seek
+### seek
 
 直播时移跳转。
 ```
@@ -499,7 +569,7 @@ __介绍__
 
 ***
 
-#### resumeLive
+### resumeLive
 
 恢复直播播放。
 ```
@@ -513,8 +583,8 @@ __介绍__
 ***
 
 
-### 待废弃接口
-#### setAutoPlay
+## 待废弃接口
+### setAutoPlay
 
 设置点播自动播放。
 ```
@@ -529,11 +599,11 @@ __参数__
 
 __介绍__
 
-待废弃，此接口仅针对点播视频使用，对直播视频无效；若您想使用点播功能，请使用 TXVodPlayer 进行点播播放。
+待废弃，此接口仅针对点播视频使用，对直播视频无效；若您想使用点播功能，请使用 [TXVodPlayer](https://cloud.tencent.com/document/product/881/20216#.E5.AF.B9.E6.8E.A5.E6.94.BB.E7.95.A5) 进行点播播放。
 
 ***
 
-#### setRate
+### setRate
 
 设置点播播放速率。
 ```
@@ -548,7 +618,7 @@ __参数__
 
 __介绍__
 
-待废弃，此接口仅针对点播视频使用，对直播视频无效；若您想使用点播功能，请使用 TXVodPlayer 进行点播播放。
+待废弃，此接口仅针对点播视频使用，对直播视频无效；若您想使用点播功能，请使用 [TXVodPlayer](https://cloud.tencent.com/document/product/881/20216#.E5.AF.B9.E6.8E.A5.E6.94.BB.E7.95.A5) 进行点播播放。
 
 ***
 
@@ -598,14 +668,14 @@ __参数__
 
 | 参数 | 类型 | 含义 |
 |-----|-----|-----|
-| yuvBuffer | byte [] | I420格式YUV数据。 |
+| yuvBuffer | byte [] | I420 格式 YUV 数据。 |
 | width | int | 视频宽度。 |
 | height | int | 视频高度。 |
-| timestamp | int | 视频PTS。 |
+| timestamp | int | 视频 PTS。 |
 
 __介绍__
 
-需要在回调中再次调用 #addVideoRawData(byte[])}将buffer塞给SDK来填充下一帧YUV数据。
+需要在回调中再次调用 [addVideoRawData](#addVideoRawData)，将 buffer 塞给 SDK 来填充下一帧 YUV 数据。
 
 ***
 
@@ -629,7 +699,7 @@ __参数__
 
 | 参数 | 类型 | 含义 |
 |-----|-----|-----|
-| buf | byte [] | pcm数据。 |
+| buf | byte [] | pcm 数据。 |
 | timestamp | long | 时间戳。 |
 
 __介绍__
@@ -654,5 +724,27 @@ __参数__
 | bits | int | 采样点大小。 |
 
 ***
+
+
+## ITXAudioVolumeEvaluationListener
+
+__功能__
+
+播放器音量大小回调。
+
+
+[](id:onAudioVolumeEvaluationNotify)
+### onAudioVolumeEvaluationNotify
+
+播放器音量大小回调。
+```
+void onAudioVolumeEvaluationNotify(int volume)
+```
+
+__参数__
+
+| 参数 | 类型 | 含义 |
+|-----|-----|-----|
+| volume | int | 音量大小, 取值范围 [0，100]。 |
 
 
